@@ -19,3 +19,18 @@ func (t *AppTest) TestThatIndexPageWorks() {
 func (t *AppTest) After() {
 	println("Tear down")
 }
+
+type MasjidGetTest struct {
+	testing.TestSuite
+}
+
+func (t *MasjidGetTest) TestThatGetJsonWorks() {
+	t.Get("/masjid/Get")
+	t.AssertOk()
+	expected := []byte(`{
+  "Id": 1,
+  "Name": "test"
+}`)
+	t.AssertEqual(expected, t.ResponseBody)
+	t.AssertContentType("application/json; charset=utf-8")
+}
