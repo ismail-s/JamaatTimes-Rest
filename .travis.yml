@@ -5,5 +5,6 @@ go:
   - tip
 install:
   - go get -u github.com/revel/cmd/revel
+  - go get github.com/ismail-s/jamaattimes-rest
 script:
   - revel test github.com/ismail-s/jamaattimes-rest dev
