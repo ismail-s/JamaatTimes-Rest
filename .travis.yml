@@ -1,7 +1,9 @@
+
 language: go
+sudo: false
+go:
   - tip
-
 install:
-  - go get github.com/revel/cmd/revel
-
-script: revel test github.com/ismail-s/jamaattimes-rest dev
+  - go get -u github.com/revel/cmd/revel
+script:
+  - revel test github.com/ismail-s/jamaattimes-rest dev
