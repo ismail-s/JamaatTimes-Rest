@@ -6,4 +6,4 @@ install:
   - go get github.com/revel/cmd/revel
   - go get -t -v ./...
 script:
-  - revel test github.com/ismail-s/jamaattimes-rest dev
+  - revel test github.com/ismail-s/JamaatTimes-Rest dev
