@@ -1,7 +1,8 @@
-language: go
-  - tip
 
+language: go
+go:
+  - 1.5
 install:
   - go get github.com/revel/cmd/revel
-
-script: revel test github.com/ismail-s/jamaattimes-rest dev
+script:
+  - revel test github.com/ismail-s/JamaatTimes-Rest dev
