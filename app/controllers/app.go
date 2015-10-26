@@ -2,26 +2,22 @@ package controllers
 
 import (
 	"github.com/revel/revel"
+	"github.com/ismail-s/jamaattimes-rest/app/models"
 )
 
-type App struct {
-	*revel.Controller
+type MasjidApp struct {
+	GormController
 }
 
-func (c App) Index() revel.Result {
-	return c.Render()
+func (c MasjidApp) Create() revel.Result {
+	masjid := models.Masjid{Name: "Test"}
+    c.Txn.NewRecord(masjid)
+    c.Txn.Create(&masjid)
+    return c.RenderJson(masjid)
 }
 
-type MasjidObj struct {
-	Id   int
-	Name string
-}
-
-type Masjid struct {
-	*revel.Controller
-}
-
-func (c Masjid) Get() revel.Result {
-	m := MasjidObj{Id: 1, Name: "test"}
-	return c.RenderJson(m)
+func (c MasjidApp) Get() revel.Result {
+	var masjids []models.Masjid
+	c.Txn.Find(&masjids)
+    return c.RenderJson(masjids)
 }
